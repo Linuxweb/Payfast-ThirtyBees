@@ -6,9 +6,9 @@ The Payfast Payment Gateway Module allows you to conduct payments using the PayF
 ## Setup
 To use this module on your site, you need to create a merchant account on payfast (https://registration.payfast.io/). 
 
-1 After creating your account, you will need to access your merchant details (MerchantID, MerchantKey and Passphrase (Optional)).
-1 Enter these details in the Configuration of the module.
-1 You're all set up!
+- After creating your account, you will need to access your merchant details (MerchantID, MerchantKey and Passphrase (Optional)).
+- Enter these details in the Configuration of the module.
+- You're all set up!
 
 NOTE: Split payments and recurring payments are still under development (looking to release in v2.0). To enable them, uncomment the code in payfast.php.
 
