@@ -3,9 +3,10 @@
 ## About
 The Payfast Payment Gateway Module allows you to conduct payments using the PayFast Payment Gateway. This module allows payments with many different payment methods (See at: https://payfast.io/features/payment-methods/)
 
+It is reccomended to download this module from the ThirtyBees Marketplace (https://store.thirtybees.com/shop-modules/payment/payfast-payment-gateway). If you have downloaded it from GitHub, you should rename the module folder to "payfast" for the module to work. 
+
 ## Setup
 To use this module on your site, you need to create a merchant account on payfast (https://registration.payfast.io/). 
-If you downloaded this module from GitHub, rename the module folder to "payfast" to ensure the module will work correctly.
 
 - After creating your account, you will need to access your merchant details (MerchantID, MerchantKey and Passphrase (Optional)).
 - Enter these details in the Configuration of the module.
