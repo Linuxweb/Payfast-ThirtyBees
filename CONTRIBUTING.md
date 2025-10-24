@@ -35,55 +35,6 @@ thirty bees is an open-source e-commerce solution, forked from PrestaShop. We'd 
 4. Language data has to be stored in a table named exactly like the object's table, but also has the `_lang` suffix: `ps_product_lang`.
 5. The same goes for specific shop data. These tables require the `_shop` suffix.
 
-#### SQL Query
-1. For simple queries the `DbQuery` class MUST be used:
-    ```php
-    $sql = new DbQuery();
-    $sql->select('p.`name`');
-    $sql->from('product', 'p');
-    $sql->innerJoin('product_lang', 'pl', 'p.`id_lang` = pl.`id_lang`');
-    $sql->where('pl.`id_lang` = 1');
-    ```
-
-2. When referring to an `ObjectModel`s primary key or table name, use the escaped `$definition` property:
-    ```php
-    $sql = new DbQuery();
-    $sql->select('p.`'.bqSQL(self::$definition['primary']).'`');
-    $sql->from(bqSQL(self::$definition['table']), 'p');
-    $sql->where('p.`'.bqSQL(self::$definition['primary']).'` = 1');
-    ```  
-
-3. Keywords in raw db queries must be written in uppercase.
-    ```sql
-    SELECT `firstname`
-    FROM `'._DB_PREFIX_.'customer`
-    ```  
-
-4. Table aliases have to be named by taking the first letter of each word and must be lowercase:
-    ```php
-    $sql = new DbQuery();
-    $sql->select('p.`'.bqSQL(self::$definition['primary']).'`');
-    $sql->from(bqSQL(self::$definition['table']), 'p');
-    $sql->where('p.`'.bqSQL(self::$definition['primary']).'` = 1');
-    ```  
-
-5. When conflicts between table aliases occur, the second character also has to be used in the name:
-    ```php
-    $sql = new DbQuery();
-    $sql->select('ca.`'.bqSQL(Product::$definition['primary']).'`, cu.`firstname`');
-    $sql->from(bqSQL(Cart::$definition['table']), 'ca');
-    $sql->innerJoin(bqSQL(Customer::$definition['table']), 'cu', 'ca.`'.bqSQL(Customer::$definition['primary']).'` = cu.`'.Customer::$definition['primary']).'`');
-    ```  
-
-6. A new line has to be created for each clause in raw db queries:
-    ```php
-    $sql = 'SELECT pl.`name`
-    FROM `'._DB_PREFIX_'.product_lang` pl
-    WHERE pl.`id_product` = 17';
-    ```  
-
-7. It is forbidden to make a `JOIN` in a `WHERE` clause
-
 ## Licenses
 Do not change the license headers of a file, except updating the copyright year.  
 Files have either an [Open Software License 3.0 (OSL)](https://tldrlegal.com/license/open-software-licence-3.0) license (Core files) or an [Academic Free License 3.0 (AFL)](https://tldrlegal.com/license/academic-free-license-3.0-(afl)) (module files). If your contribution includes files with a different license your contribution cannot be accepted. If you do need to include a library for your improvement, add it to `composer.json`.  
