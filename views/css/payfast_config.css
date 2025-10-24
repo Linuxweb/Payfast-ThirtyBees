@@ -1,0 +1,290 @@
+/* payfast_config.css
+ *
+ * Copyright (c) 2025 Linuxweb (Pty) Ltd
+ * You (being anyone who is not Linuxweb (Pty) Ltd) may download and use this plugin / code in your own website in conjunction with a registered and active PayFast account. If your PayFast account is terminated for any reason, you may not use this plugin / code or part thereof.
+ * Except as expressly indicated in this licence, you may not use, copy, modify or distribute this plugin / code or part thereof in any way.
+ * 
+ * @author     Ruben Venter (ruben@linuxweb.co.za)
+ * @version    1.0.0
+ * @date       23/10/2025
+ *
+ * @link       https://github.com/Linuxweb/Payfast-ThirtyBees/
+ */
+
+.pf__logo {
+  height: 60px;
+  margin-left: 20px;
+}
+
+.pf__header {
+  /*height: 75px;*/
+  position: relative;    
+  width: 100%;
+  background-color: #F3F3F3;
+
+}
+
+.pf__header_text {
+  color: #041b2b;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.pf__main--section {
+  width: 100%;
+  background-color: #ffffff;
+  margin-right: 20px;
+  padding: 20px;
+  font-size: 13px;
+  color: #000000;
+  padding-left: 40px;
+
+}
+
+.divider {
+  display: block;
+  /*width: 90%;*/
+  height: 1px;
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.main__section--header {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.merchant__config {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.pf__selector input[type='radio'] {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  outline: none;
+  border: 2px solid gray;
+  margin-right: 10px;
+  margin-top: -5px;
+}
+
+.pf__selector input[type='radio']:before {
+  content: '';
+  display: block;
+  width: 66%;
+  height: 66%;
+  margin: 2px;
+  border-radius: 50%;
+}
+
+.pf__selector input[type="radio"]:checked:before {
+  background: #022d2d;
+
+}
+
+.pf__selector input[type="radio"]:checked {
+  border-color: grey;
+}
+
+/* Webkit browsers like Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.payfast__mode {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.additional__info {
+  width: 55%;
+  margin-top: 32px !important;
+}
+
+.pf__subheading {
+  font-size: 14px;
+  color: #0b0b0b;
+  margin-bottom: 24px;
+}
+
+.account__details {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+}
+
+.additional__info--smaller {
+  margin-top: 20px !important;
+}
+
+.merchant__headers {
+  margin-bottom: 2px;
+}
+
+.merchant__input {
+  height: 31px;
+  margin-bottom: 8px !important;
+
+}
+
+#merchant__input--details {
+  padding-left: 10px;
+}
+
+.additional__info--taller {
+  margin-top: 0 !important;
+}
+
+.debug__selector {
+  margin-top: 20px;
+}
+
+.preview__section {
+  flex-direction: row-reverse;
+}
+
+.preview__header {
+  margin-top: 32px;
+  font-size: 16px;
+}
+
+.pf__dropdown {
+  height: 28px;
+  background-color: #ffffff;
+}
+
+#pf__button {
+  margin-top: 30px;
+  background: #022d2d;
+  border: 1px solid #022d2d;
+  color: #fff;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1;
+  padding: 18px 24px;
+  border-radius: 24px;
+  transition: all .3s ease-in-out;
+  text-shadow: none;
+}
+
+.pf__form--footer {
+  width: 100%;
+  background-color: #F3F3F3;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 25px;
+}
+
+.config__pf {
+  width: 100%;
+  -moz-box-shadow: 0px 0px 5px 3px #ccc;
+  -webkit-box-shadow: 0px 0px 5px 3px #ccc;
+  box-shadow: 0px 0px 5px 3px #ccc;
+}
+
+#pf__content {
+  max-width: 750px;
+  min-width: 500px !important;
+}
+
+.footer__header {
+  width: 204px;
+  height: 24px;
+  color: #000000;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 32px;
+  margin-left: 50px;
+  margin-bottom: 10px;
+}
+
+.pf__form--footer span {
+  font-size: 15px;
+}
+
+.divider__longer {
+  width: 100%;
+}
+
+.footer__info {
+  display: flex;
+  flex-direction: inherit;
+  width: 70%;
+}
+
+.footer__info--para {
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+}
+
+@media screen and (max-width: 1023px) {
+  .config__pf {
+      max-width: 95%;
+  }
+
+  .merchant__config {
+      flex-direction: column;
+  }
+
+  .additional__info {
+      width: 100%;
+  }
+
+  .payfast__mode {
+      max-width: 100%;
+  }
+
+  .account__details {
+      width: 50%;
+  }
+
+  .debug__selector {
+      margin-bottom: 10px;
+  }
+
+  .pf__main--section {
+      width: 100%;
+  }
+}
+
+/* For Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  background-color: #F5F8F9;
+}
+
+
+
+#pf__link {
+  color: #022d2d;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.split__selector {
+  margin-top: 15px;
+}
+
+.split__info {
+  margin-top: 20px;
+}
+
+.page-sidebar-closed:not(.mobile) #content {
+  padding-left: 0;
+  margin-left: 40px;
+}
+
+#content input[type='text'] {
+  padding-left: 10px;
+}
