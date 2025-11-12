@@ -12,7 +12,10 @@ To use this module on your site, you need to create a merchant account on payfas
 - Enter these details in the Configuration of the module.
 - You're all set up!
 
-NOTE: Split payments and recurring payments are still under development (looking to release in v2.0). To enable them, uncomment the code in payfast.php.
+NOTE: Split payments, multiple currencies support and recurring payments are still under development (looking to release in v2.0). To enable them, uncomment the code in payfast.php.
+
+## Known Issues
+1. Multiple Currencies aren't currently working. Keeps looping back to previous checkout steps. Only South African Rands (ZAR) currently works.
 
 ## License
 This software is published under the [Academic Free License 3.0](https://opensource.org/licenses/afl-3.0.php)
