@@ -39,8 +39,6 @@ class Payfast extends PaymentModule
         $this->version = '1.0.0';
         $this->author = 'Linuxweb';
         $this->bootstrap = true;
-        $this->currencies = true;
-        $this->currencies_mode = 'radio';
 
         parent::__construct();
 
