@@ -561,7 +561,24 @@ class Payfast extends PaymentModule
 
     public function hookPaymentReturn($params)
     {
-        Tools::redirect($this->context->link->getPageLink('order-history', true));
+        if (!$this->active) {
+            return '';
+        }
+
+        // 1. Get the order details from the standard parameters passed to this hook
+        $order = $params['objOrder'];
+        $currency = $params['currencyObj'];
+        $total = $params['total_to_pay'];
+
+        // 2. Assign the missing variables to Smarty so the template can use them
+        $this->context->smarty->assign([
+            'order_reference' => $order->reference,
+            'order_total'     => Tools::displayPrice($total, $currency, false),
+            // Use getPageLink to generate the correct URL for the 'history' controller
+            'order_link'      => $this->context->link->getPageLink('history', true), 
+        ]);
+
+        return $this->display(__FILE__, 'views/templates/front/success.tpl');
     }
 
     public function hookHeader($params)
