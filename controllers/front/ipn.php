@@ -93,13 +93,12 @@ class PayfastIpnModuleFrontController extends ModuleFrontController
         $m_payment_id = isset($pfData['m_payment_id']) ? $pfData['m_payment_id'] : null;
         $postedAmount = isset($pfData['amount_gross']) ? (float)$pfData['amount_gross'] : null;
 
-        $bComparePassed = false;
         if ($m_payment_id !== null && $postedAmount !== null) {
             try {
                 $cart = new Cart((int)$m_payment_id);
                 if (Validate::isLoadedObject($cart)) {
                     $expectedAmount = (float)number_format($cart->getOrderTotal(true, Cart::BOTH), 2, '.', '');
-                    $bComparePassed = (abs($expectedAmount - $postedAmount) <= 0.01);
+                    $bComparePassed = (abs($expectedAmount - $postedAmount) <= 0.10);
                 }
             } catch (Exception $e) {
 
@@ -124,12 +123,7 @@ class PayfastIpnModuleFrontController extends ModuleFrontController
 
             if ($response !== false && trim($response) === 'VALID') {
                 $bServerPassed = true;
-            } else {
-                $bServerPassed = false;
             }
-        } else {
-            $bServerPassed = false;
-        }
 
         // Final check
         if ($bSigPassed && $bDomainPassed && $bComparePassed && $bServerPassed) {
@@ -139,12 +133,25 @@ class PayfastIpnModuleFrontController extends ModuleFrontController
             $order_id = Order::getOrderByCartId($cart->id);
 
             if (!$order_id) {
+                //Convert currency to zar for order
+                $fromCurrency = new Currency(Currency::getIdByIsoCode('ZAR'));
+                $toCurrency   = new Currency((int)$cart->id_currency);
+
+                $orderAmount = Tools::convertPriceFull(
+                    (float)$postedAmount,
+                    $fromCurrency,
+                    $toCurrency
+                );
+                $orderAmount = (float)number_format($orderAmount, 2, '.', '');
+
+
+
                 // Create order if it doesn’t exist
                 $this->module->validateOrder(
                     $cart->id,
                     //'Payment error',
                     Configuration::get('PS_OS_PAYMENT'), // “Payment accepted” status
-                    $cart->getOrderTotal(true, Cart::BOTH),
+                    $orderAmount,
                     $this->module->displayName,
                     'PayFast payment successful',
                     [],
@@ -157,4 +164,5 @@ class PayfastIpnModuleFrontController extends ModuleFrontController
         } 
         exit; // ensure nothing else outputs
     }
+}
 }
