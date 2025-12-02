@@ -19,40 +19,30 @@ class PayfastSuccessModuleFrontController extends ModuleFrontController
 
     public function initContent()
     {
-        // Do not call parent::initContent() yet to avoid loading header/footer if we redirect
+        parent::initContent();
 
-        $cart_id = (int)Tools::getValue('id_cart');
-        $cart = new Cart($cart_id);
-        $customer = new Customer($cart->id_customer);
-
-        // Security checks
-        if (!$cart->id || !$customer->id) {
-            Tools::redirect($this->context->link->getPageLink('order', true, null, 'step=1'));
+        $cartId = (int)Tools::getValue('id_cart');
+        if (!$cartId) {
+            die('Missing cart ID.');
         }
 
-        $order_id = Order::getOrderByCartId($cart->id);
-        $order = $order_id ? new Order($order_id) : null;
+        $orderId = Order::getOrderByCartId($cartId);
 
-        // Check if payment was successful
-        if ($order && (int)$order->current_state === (int)Configuration::get('PS_OS_PAYMENT')) {
-            
-            // FIX: Redirect to standard Order Confirmation Controller
-            // This triggers the 'displayOrderConfirmation' hook that GTM needs.
+        if ($orderId) {
+            // Order exists → redirect
             Tools::redirect(
-                'index.php?controller=order-confirmation&id_cart=' . (int)$cart->id .
-                '&id_module=' . (int)$this->module->id .
-                '&id_order=' . (int)$order->id .
-                '&key=' . $customer->secure_key
+                'index.php?controller=order-confirmation&id_cart=' . $cartId .
+                '&id_module=' . $this->module->id .
+                '&id_order=' . $orderId .
+                '&key=' . $this->context->customer->secure_key
             );
-
-        } else {
-            // Payment not valid yet, show failure page
-            parent::initContent();
-            $this->context->smarty->assign([
-                'cart_id' => $cart->id,
-                'retry_link' => $this->context->link->getPageLink('order', true),
-            ]);
-            $this->setTemplate('failure.tpl');
         }
+
+        // Order not yet created — show "processing" page
+        $this->context->smarty->assign([
+            'message' => 'Payment received. Order is being processed.',
+        ]);
+
+        $this->setTemplate('module:payfast/views/templates/front/success.tpl');
     }
 }
