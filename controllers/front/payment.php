@@ -43,20 +43,15 @@ class PayfastPaymentModuleFrontController extends ModuleFrontController
             Tools::redirect($this->context->link->getPageLink('order', true, null, 'step=1&payfast_error=1'));
         }
 
-        // Check currency; gracefully handle non-ZAR by showing an error or redirecting back.
-        if ($currency->iso_code != 'ZAR') {
-            Tools::redirect($this->context->link->getPageLink('order', true, null, 'step=1&payfast_currency=1'));
-        }
+        // -- Convert cart currency to ZAR --
+        $cartTotal = (float)$cart->getOrderTotal(true, Cart::BOTH);
 
+        $cartCurrency = new Currency((int)$cart->id_currency);
+        $zarId = Currency::getIdByIsoCode('ZAR');
+        $zarCurrency = new Currency((int)$zarId);
 
-        // Ensure valid payment amount
-        $amount = (float)$cart->getOrderTotal(true, Cart::BOTH);
-        
-        if ($amount <= 0) {
-            die('Invalid payment amount: ' . $amount);
-        }
-
-        $amount = number_format($amount, 2, '.', ''); // Format for PayFast
+        $amountZAR = Tools::convertPriceFull($cartTotal, $cartCurrency, $zarCurrency);
+        $amountZAR = number_format((float)$amountZAR, 2, '.', '');
 
         // Return URL with cart ID
         $return_url = $this->context->link->getModuleLink('payfast', 'success', ['id_cart' => $cart->id], true);
@@ -74,7 +69,7 @@ class PayfastPaymentModuleFrontController extends ModuleFrontController
             'name_last'      => $customer->lastname,
             'email_address'  => $customer->email,
             'm_payment_id'   => $cart->id,
-            'amount'         => $amount,
+            'amount'         => $amountZAR,
             'item_name'      => 'Order #' . $cart->id,
         ];
 
