@@ -1,0 +1,18 @@
+[2026-08-27 13:47:58] IPN received from 144.126.193.139: {"m_payment_id":"5884","pf_payment_id":"3351206","payment_status":"COMPLETE","item_name":"Order #5884","item_description":"","amount_gross":"125.00","amount_fee":"-2.88","amount_net":"122.12","custom_str1":"","custom_str2":"","custom_str3":"","custom_str4":"","custom_str5":"","custom_int1":"","custom_int2":"","custom_int3":"","custom_int4":"","custom_int5":"","name_first":"Ruben","name_last":"Venter","email_address":"rubenventer853@gmail.com","merchant_id":"10042627","signature":"6894c2ecc3f23b56b1059f360a677f04"}
+[2026-08-27 13:47:58] Signature check: PASSED (received=6894c2ecc3f23b56b1059f360a677f04, calculated=6894c2ecc3f23b56b1059f360a677f04)
+[2026-08-27 13:47:58] Domain/IP check: PASSED (remote=144.126.193.139)
+[2026-08-27 13:47:58] Amount check: PASSED (cart total in ZAR=125, posted amount_gross=125)
+[2026-08-27 13:47:58] Server validate (https://sandbox.payfast.co.za/eng/query/validate): response='VALID' -> PASSED
+[2026-08-27 13:47:59] Order creation SUCCEEDED (id_order=391) for cart 5884
+[2026-08-27 13:50:25] IPN received from 144.126.193.139: {"m_payment_id":"5885","pf_payment_id":"3351212","payment_status":"COMPLETE","item_name":"Order #5885","item_description":"","amount_gross":"224.93","amount_fee":"-5.17","amount_net":"219.76","custom_str1":"","custom_str2":"","custom_str3":"","custom_str4":"","custom_str5":"","custom_int1":"","custom_int2":"","custom_int3":"","custom_int4":"","custom_int5":"","name_first":"Ruben","name_last":"Venter","email_address":"rubenventer853@gmail.com","merchant_id":"10042627","signature":"93b399c6743eeffcca7823415bf60806"}
+[2026-08-27 13:50:25] Signature check: PASSED (received=93b399c6743eeffcca7823415bf60806, calculated=93b399c6743eeffcca7823415bf60806)
+[2026-08-27 13:50:25] Domain/IP check: PASSED (remote=144.126.193.139)
+[2026-08-27 13:50:25] Amount check: PASSED (cart total in ZAR=224.93, posted amount_gross=224.93)
+[2026-08-27 13:50:25] Server validate (https://sandbox.payfast.co.za/eng/query/validate): response='VALID' -> PASSED
+[2026-08-27 13:50:26] Order creation SUCCEEDED (id_order=392) for cart 5885
+[2026-08-27 14:58:51] IPN received from 144.126.193.139: {"m_payment_id":"5886","pf_payment_id":"3351393","payment_status":"COMPLETE","item_name":"Order #5886","item_description":"","amount_gross":"50.00","amount_fee":"-2.30","amount_net":"47.70","custom_str1":"","custom_str2":"","custom_str3":"","custom_str4":"","custom_str5":"","custom_int1":"","custom_int2":"","custom_int3":"","custom_int4":"","custom_int5":"","name_first":"Ruben","name_last":"Venter","email_address":"rubenventer853@gmail.com","merchant_id":"10042627","signature":"c32451c7723f3b138245bcdb025bb9f7"}
+[2026-08-27 14:58:51] Signature check: PASSED (received=c32451c7723f3b138245bcdb025bb9f7, calculated=c32451c7723f3b138245bcdb025bb9f7)
+[2026-08-27 14:58:51] Domain/IP check: PASSED (remote=144.126.193.139)
+[2026-08-27 14:58:51] Amount check: PASSED (cart total in ZAR=50, posted amount_gross=50)
+[2026-08-27 14:58:51] Server validate (https://sandbox.payfast.co.za/eng/query/validate): response='VALID' -> PASSED
+[2026-08-27 14:58:53] Order creation SUCCEEDED (id_order=393) for cart 5886

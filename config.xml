@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <name><![CDATA[payfast]]></name>
+  <displayName><![CDATA[PayFast (South Africa)]]></displayName>
+  <version><![CDATA[1.0.0]]></version>
+  <description><![CDATA[Accept payments via PayFast.]]></description>
+  <author><![CDATA[Linuxweb]]></author>
+  <author_uri/>
+  <tab><![CDATA[payments_gateways]]></tab>
+  <confirmUninstall/>
+  <is_configurable>1</is_configurable>
+  <need_instance>1</need_instance>
+  <limited_countries/>
+</module>
